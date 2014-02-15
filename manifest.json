@@ -5,7 +5,7 @@
   "description": "This extension lets you login to sites using facial recognition",
   "version": "1.0",
 
-  "permissions": ["activeTab"],
+  "permissions": ["tabs"],
 
   "background": {
     "scripts": ["background.js"]
@@ -14,6 +14,15 @@
   "browser_action": {
     "default_icon": "icon.png"
   },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["jquery-1.9.1.min.js", "content.js"]
+    }
+  ],
+
+  "web_accessible_resources": ["content.js"],
 
   "options_page": "initialize.html"
 }
