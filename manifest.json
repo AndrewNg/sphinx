@@ -18,9 +18,11 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["jquery.js", "content.js"]
+      "js": ["jquery-1.9.1.min.js", "content.js"]
     }
   ],
+
+  "web_accessible_resources": ["content.js"],
 
   "options_page": "initialize.html"
 }
