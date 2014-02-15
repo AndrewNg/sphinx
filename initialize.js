@@ -4,7 +4,7 @@ $(document).ready(function () {
         file = dataURLtoBlob(dataUrl);
         var size = file.size;
         alert("Picture size: " + size);
-        uploadImage(file);
+        //uploadImage(file);
         $("#gallery").append('<img src="' + dataUrl + '" >');
     });
 });
@@ -29,8 +29,8 @@ function uploadImage(file) {
     var fd = new FormData();
     // Append our Canvas image file to the form data
     fd.append("files", file);
-    fd.append("album", $("#album").val());
-    fd.append("albumkey", $("#albumkey").val());
+    fd.append("album", "headloktest1");
+    fd.append("albumkey", "06162fc06b941f2ee3f010bce93a999c3164786f861e6f2d03db5c262056d39c");
     // And send it
     $.ajax({
         url: "https://lambda-face-recognition.p.mashape.com/recognize",
