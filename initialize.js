@@ -1,3 +1,5 @@
+var count = 0;
+
 $(document).ready(function () {
     var file = null;
     $('#photo').photobooth().on("image", function (event, dataUrl) {
@@ -38,7 +40,8 @@ function uploadImage(file) {
     fd.append("jobs", "face_add");
     fd.append("name_space", "headlok");
     fd.append("user_id", "headlok");
-    fd.append("uploaded_file", fd); 
+    fd.append("uploaded_file", file); 
+    fd.append("tag", "sabar.dasgupta@gmail.com"); 
     // And send it
     $.ajax({
         url: "http://rekognition.com/func/api/",
@@ -49,5 +52,23 @@ function uploadImage(file) {
     }).done(function (result) {
         var resultObject = JSON.stringify(result);
         alert(resultObject);
+        if (count >= 2) {
+        	$('#photo').empty();
+        	var fd = new FormData();
+			    // Append our Canvas image file to the form data
+			    fd.append("api_key", "w4MNPJTrcCmQorju");
+			    fd.append("api_secret", "MMJvTTMcjGCte6N2");
+			    fd.append("jobs", "face_train");
+			    fd.append("name_space", "headlok");
+			    fd.append("user_id", "headlok");  	
+        	$.ajax({
+			        url: "http://rekognition.com/func/api/",
+			        type: "POST",
+			        data: fd,
+			        processData: false,
+			        contentType: false
+			    })
+        }
+        count++;
     });
 }
