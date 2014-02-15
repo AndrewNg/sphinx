@@ -4,7 +4,8 @@ $(document).ready( function() {
 
 // If they login, ask them if they want to have their face remember it
 
-// If they have visited before, log them in
+// If they have visited before, log them in. First, take a picture.
+// Send it to the album. Check success callback.
 function logIn() {
 
 }
