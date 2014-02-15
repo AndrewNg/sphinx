@@ -2,12 +2,13 @@ var loginMap = {};
 
 $(document).ready( function() {
   isPasswordField();
+  wantRemembered();
 });
 
 // If they login, ask them if they want to have their face remembered
 // Map the keys (urls) to values (boolean)
 function wantRemembered() {
-  if (isPassWordField) {
+  if (isPasswordField()) {
     if (confirm("Do you want to save your login with facial recognition from now on?")) {
       loginMap[document.URL.toString()] = true;
     }
