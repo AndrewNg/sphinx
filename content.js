@@ -3,6 +3,7 @@ var loginMap = {};
 $(document).ready( function() {
   isPasswordField();
   wantRemembered();
+  window.alert();
 });
 
 // If they login, ask them if they want to have their face remembered
