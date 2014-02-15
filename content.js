@@ -1,13 +1,32 @@
+var loginMap = {};
+
 $(document).ready( function() {
   isPasswordField();
 });
 
-// If they login, ask them if they want to have their face remember it
+// If they login, ask them if they want to have their face remembered
+// Map the keys (urls) to values (boolean)
+function wantRemembered() {
+  if (isPassWordField) {
+    if (confirm("Do you want to save your login with facial recognition from now on?")) {
+      loginMap[document.URL.toString()] = true;
+    }
+    else {
+      loginMap[document.URL.toString()] = false;
+    }
+  }
+}
 
-// If they have visited before, log them in. First, take a picture.
-// Send it to the album. Check success callback.
+// If they have visited before and they chill, log them in. First, take
+// a picture. Send it to the album. Check success callback.
 function logIn() {
+  if (loginMap[document.URL.toString()] === true) {
+    // log that shit in
+  }
 
+  else {
+    // chill
+  }
 }
 
 // Check if the page is valid
