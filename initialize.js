@@ -8,3 +8,42 @@ $(document).ready(function () {
         $("#gallery").append('<img src="' + dataUrl + '" >');
     });
 });
+
+function dataURLtoBlob(dataUrl) {
+    // Decode the dataURL    
+    var binary = atob(dataUrl.split(',')[1]);
+
+    // Create 8-bit unsigned array
+    var array = [];
+    for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+    }
+
+    // Return our Blob object
+    return new Blob([new Uint8Array(array)], {
+        type: 'image/png'
+    });
+}
+
+function uploadImage(file) {
+    var fd = new FormData();
+    // Append our Canvas image file to the form data
+    fd.append("files", file);
+    fd.append("album", $("#album").val());
+    fd.append("albumkey", $("#albumkey").val());
+    // And send it
+    $.ajax({
+        url: "https://lambda-face-recognition.p.mashape.com/recognize",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("X-Mashape-Authorization", "AC4O9pVdz3UdzuB8vPCCxSH9giPKuNIo");
+        }
+    }).done(function (result) {
+        alert("Received response..");
+        var resultObject = JSON.stringify(result);
+        alert(resultObject);
+    });
+}
