@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+
+  "name": "Headlok",
+  "description": "This extension lets you login to sites using facial recognition",
+  "version": "1.0",
+
+  "permissions": ["videoCapture"],
+  "browser_action": {
+
+  }
+}
