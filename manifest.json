@@ -24,5 +24,20 @@
 
   "web_accessible_resources": ["content.js"],
 
-  "options_page": "initialize.html"
+  "options_page": "initialize.html",
+
+  "oauth2": {
+    "client_id": "1092947901905.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive"
+    ]
+  },
+
+  "permissions": [
+    "https://docs.google.com/feeds/",
+    "https://docs.googleusercontent.com/",
+    "https://spreadsheets.google.com/feeds/",
+    "https://ssl.gstatic.com/",
+    "https://www.googleapis.com/"
+  ]
 }
