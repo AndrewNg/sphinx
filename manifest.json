@@ -27,10 +27,7 @@
   "options_page": "initialize.html",
 
   "oauth2": {
-    "client_id": "1092947901905.apps.googleusercontent.com",
-    "scopes": [
-      "https://www.googleapis.com/auth/drive"
-    ]
+    "client_id": "1092947901905.apps.googleusercontent.com"
   },
 
   "permissions": [
