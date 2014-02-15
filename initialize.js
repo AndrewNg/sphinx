@@ -41,7 +41,7 @@ function uploadImage(file) {
     fd.append("name_space", "headlok");
     fd.append("user_id", "headlok");
     fd.append("uploaded_file", file); 
-    fd.append("tag", "sabar.dasgupta@gmail.com"); 
+    fd.append("tag", $("#email").val()); 
     // And send it
     $.ajax({
         url: "http://rekognition.com/func/api/",
