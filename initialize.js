@@ -16,7 +16,7 @@ $(function() {
 
 function dataURLtoBlob(dataUrl) {
     // Decode the dataURL    
-    var binary = atob(dataUrl.split(',')[1]);
+    var binary = atob(dataUrl.split(',')[1]); // WTF magiks
 
     // Create 8-bit unsigned array
     var array = [];
@@ -33,22 +33,20 @@ function dataURLtoBlob(dataUrl) {
 function uploadImage(file) {
     var fd = new FormData();
     // Append our Canvas image file to the form data
-    fd.append("album", "headloktest1");
-    fd.append("albumkey", "06162fc06b941f2ee3f010bce93a999c3164786f861e6f2d03db5c262056d39c");
-    fd.append("entryid", "sabar");
-    fd.append("files", file);
+    fd.append("api_key", "w4MNPJTrcCmQorju");
+    fd.append("api_secret", "MMJvTTMcjGCte6N2");
+    fd.append("jobs", "face_add");
+    fd.append("name_space", "headlok");
+    fd.append("user_id", "headlok");
+    fd.append("uploaded_file", fd); 
     // And send it
     $.ajax({
-        url: "https://lambda-face-recognition.p.mashape.com/album_train",
+        url: "http://rekognition.com/func/api/",
         type: "POST",
         data: fd,
         processData: false,
-        contentType: false,
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("X-Mashape-Authorization", "AC4O9pVdz3UdzuB8vPCCxSH9giPKuNIo");
-        }
+        contentType: false
     }).done(function (result) {
-        alert("Received response..");
         var resultObject = JSON.stringify(result);
         alert(resultObject);
     });
