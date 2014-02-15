@@ -9,6 +9,11 @@ $(document).ready(function () {
     });
 });
 
+$(function() {
+      var coords = $('.photobooth.T').faceDetection();
+      console.log(coords);    
+  });
+
 function dataURLtoBlob(dataUrl) {
     // Decode the dataURL    
     var binary = atob(dataUrl.split(',')[1]);
