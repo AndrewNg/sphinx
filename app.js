@@ -1,9 +1,8 @@
 var loginMap = {};
+var loginAttemptCounter = 0;
 
 $(document).ready( function() {
-  isPasswordField();
-  wantRemembered();
-  window.alert();
+  logIn();
 });
 
 // If they login, ask them if they want to have their face remembered
@@ -22,10 +21,16 @@ $(document).ready( function() {
 // If they have visited before and they chill, log them in. First, take
 // a picture. Send it to the album. Check success callback.
 function logIn() {
-  if (loginMap[document.URL.toString()] === true) {
-    // log that shit in
+  //test works for twitter
+  // if (loginMap[document.URL.toString()] === true) {
+  //   // log that shit in
+  // }
+  if(isPasswordField() && loginAttemptCounter < 1){
+    $(".js-username-field").val("hello");
+    $(".js-password-field").val("hello");
+    $(".submit").click();
+    loginAttemptCounter++;
   }
-
   else {
     // chill
   }
