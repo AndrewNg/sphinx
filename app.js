@@ -3,7 +3,10 @@ var loginMap = {};
 $(document).ready( function() {
   isPasswordField();
   wantRemembered();
-  window.alert();
+  chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+      window.alert("test");
+      window.alert(token);
+  });
 });
 
 // If they login, ask them if they want to have their face remembered

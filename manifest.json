@@ -5,7 +5,7 @@
   "description": "This extension lets you login to sites using facial recognition",
   "version": "1.0",
 
-  "permissions": ["tabs"],
+  "permissions": ["tabs", "identity"],
 
   "background": {
     "scripts": ["background.js"]
@@ -21,6 +21,8 @@
       "js": ["jquery-1.9.1.min.js", "app.js"]
     }
   ],
+
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyxmJkLXTru3fQBzS9OwEi1Ml9sYbKiwStPL81czUSL6MUPaKDvntFS/JhUwiD8xbq1aCm0hIUtYXno5MzlIiWRbb2FRUhKjaFbfETmzNIBUCxZvsHHEZXbknD9RA4TsL+2+KlibqQjjgRqH2s1wbzNGFK6SWz6qQSbp1EjNKkMMe5ryvlwQjNGLUWRvHNGzakB5O6s0NwaVKfVJB4QAD1Kt826dCypfdPiJeUyn+rXXbveMUHB3rfUUqr3uIQTZVrdmUafDrNsLJvhuEt8QfrwVfymLcV31Vik8ILsM1oqzRk/IxcLrTdGzEpcGXSJfpScvpwjl4a+nWwfLYotwCcwIDAQAB",
 
   "web_accessible_resources": ["app.js"],
 
