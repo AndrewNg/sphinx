@@ -1,11 +1,20 @@
-<html data-ng-app="PennApps">
-<head>
-  <base target="_blank">
-  <script src="angular.min.js"></script>
+<html>
+<head> 
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="photobooth_min.js"></script>
+	<script type="text/javascript" src="initialize.js"></script>
 </head>
-<body data-ng-controller="InitializeController">
-<section id="main">
-  <nav>
-    <h2>PennApps</h2>
-  </nav>
-</section>
+<style type = "text/css">
+  #photo {
+    height: 300px;
+    width: 380px;
+  }
+  #gallery {
+    margin: 5px 0;
+    background: #f6f6f6;
+	}
+</style>
+<div id = "photo"></div>
+
+<div id = "gallery"></div>
+</html>
