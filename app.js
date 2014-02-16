@@ -90,9 +90,17 @@ function logIn() {
 function testrecognition(data) {
   if (data['face_detection'][0]) {
     if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == email) {
+      //twitter
       $(".js-username-field").val("chesscademy");
       $(".js-password-field").val("ibet1000leaves");
+      //chesscademy
+      $("#user_login").val("chesscademy");
+      $("#user_password").val("ibet1000leaves");
+      //reddit
+      $( "input[name='user']" ).val("chesscademy");
+      $( "input[name='passwd']" ).val("ibet1000leaves");
       $(".submit").click();
+      $(":submit").click();
     }
   }
   else {
