@@ -1,6 +1,29 @@
 var count = 0;
+var HeadLok; 
+var headlok; 
+ 
+gameScore.set("score", 1337);
+gameScore.set("playerName", "Sean Plott");
+gameScore.set("cheatMode", false);
+ 
+gameScore.save(null, {
+  success: function(gameScore) {
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectId: ' + gameScore.id);
+  },
+  error: function(gameScore, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and description.
+    alert('Failed to create new object, with error code: ' + error.description);
+  }
+});
+
+
 
 $(document).ready(function () {
+    HeadLok = Parse.Object.extend("HeadLok");
+    headlok = new HeadLok();
+
     var file = null;
     $('#photo').photobooth().on("image", function (event, dataUrl) {
         file = dataURLtoBlob(dataUrl);
@@ -44,7 +67,6 @@ function uploadImage(file) {
     fd.append("user_id", "headlok");
     fd.append("uploaded_file", file); 
     fd.append("tag", $("#email").val()); 
-    localStorage.setItem("email", $("#email").val());
     // And send it
     $.ajax({
         url: "http://rekognition.com/func/api/",
