@@ -4,21 +4,25 @@ chrome.browserAction.onClicked.addListener(function() {
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		console.log("message received");
-		if (request.greeting == "snapshot") {
+		if (request.type == "snapshot") {
 			navigator.webkitGetUserMedia({video: true}, function(stream) {
-				document.body.innerHTML += '<video id="v" width="300" height="300"></video>';
-				document.body.innerHTML += '<canvas id="c" style="display:none;" width="300" height="300"></canvas>';
+				document.body.innerHTML += '<video id="v" width="900" height="900"></video>';
+				document.body.innerHTML += '<canvas id="c" style="display:none;" width="900" height="900"></canvas>';
 
 				var video = document.getElementById('v');
 				var canvas = document.getElementById('c');
 
-				video.src = stream;
-				canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
-				var img = canvas.toDataURL("image/png");
-				console.log(img);
-				sendResponse({farewell: "test"});
+				video.src = window.webkitURL.createObjectURL(stream);
+				video.play();
+
+				setTimeout(function() {
+					canvas.getContext("2d").drawImage(video, 0, 0);
+					var img = canvas.toDataURL("image/png");
+					console.log(img);
+					sendResponse({image: img});
+				},200);
 			}, function(err) { alert("there was an error " + err)});
 		}
+		return true;
 });
 

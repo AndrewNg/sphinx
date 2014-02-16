@@ -28,7 +28,7 @@ $(document).ready( function() {
 // }
 
 function dataURLtoBlob(dataUrl) {
-    // Decode the dataURL    
+    // Decode the dataURL
     var binary = atob(dataUrl.split(',')[1]); // WTF magiks
 
     // Create 8-bit unsigned array
@@ -52,9 +52,11 @@ function logIn() {
   // }
   if(isPasswordField() && loginAttemptCounter < 1){
 
-    chrome.runtime.sendMessage({greeting: "snapshot"}, function(response) {
-      var file = response;
-      window.alert(file);
+    chrome.runtime.sendMessage({type: "snapshot"}, function(response) {
+      var dataURL = response.image;
+      var file = dataURLtoBlob(dataURL);
+      console.log(dataURL);
+      console.log(file);
 
       var fd = new FormData();
       // Append our Canvas image file to the form data
@@ -62,8 +64,8 @@ function logIn() {
       fd.append("api_secret", "MMJvTTMcjGCte6N2");
       fd.append("jobs", "face_recognize");
       fd.append("name_space", "headlok");
-      fd.append("uploaded_file", file); 
-      fd.append("user_id", "headlok");    
+      fd.append("uploaded_file", file);
+      fd.append("user_id", "headlok");
       $.ajax({
           url: "http://rekognition.com/func/api/",
           type: "POST",
@@ -102,5 +104,3 @@ function isPasswordField() {
   console.log("false");
   return false;
 }
-
-// Check if the page is saved

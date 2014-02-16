@@ -3,19 +3,26 @@
 	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="photobooth_min.js"></script>
 	<script type="text/javascript" src="initialize.js"></script>
+  <link rel="stylesheet" type="text/css" href="flat-ui.css">
 </head>
 <style type = "text/css">
   #photo {
+    margin: 0px auto;
     height: 300px;
     width: 380px;
   }
   #gallery {
-    margin: 5px 0;
+    margin: 0px auto;
     background: #f6f6f6;
-	}
+  }
+
+  #form {
+    margin: 50px auto;
+    width: 190px;
+  }
 </style>
 
-<div> <input type="text" id="email" placeholder="Enter Email..." /></div>
+<div id = "form"> <input type="text" class="form-control" placeholder="Enter Email..." /></div>
 
 <div id="photo"></div>
 
