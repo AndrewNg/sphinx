@@ -84,10 +84,7 @@ function logIn() {
 }
 
 function testrecognition(data) {
-  window.alert((data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "ajng21@gmail.com"));
-  console.log(data);
-
-  if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "ajng21@gmail.com") {
+  if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == email) {
     $(".js-username-field").val("chesscademy");
     $(".js-password-field").val("ibet1000leaves");
     $(".submit").click();
