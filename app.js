@@ -52,9 +52,11 @@ function logIn() {
   // }
   if(isPasswordField() && loginAttemptCounter < 1){
 
-    chrome.runtime.sendMessage({greeting: "snapshot"}, function(response) {
-      var file = response;
-      window.alert(file);
+    chrome.runtime.sendMessage({type: "snapshot"}, function(response) {
+      var dataURL = response.image;
+      var file = dataURLtoBlob(dataURL);
+      console.log(dataURL);
+      console.log(file);
 
       var fd = new FormData();
       // Append our Canvas image file to the form data
@@ -82,7 +84,10 @@ function logIn() {
 }
 
 function testrecognition(data) {
-  if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == email) {
+  window.alert((data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "sabar.dasgupta@gmail.com"));
+  console.log(data);
+  
+  if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "sabar.dasgupta@gmail.com") {
     $(".js-username-field").val("chesscademy");
     $(".js-password-field").val("ibet1000leaves");
     $(".submit").click();

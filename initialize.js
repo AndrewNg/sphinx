@@ -5,7 +5,9 @@ $(document).ready(function () {
     $('#photo').photobooth().on("image", function (event, dataUrl) {
         file = dataURLtoBlob(dataUrl);
         var size = file.size;
-        alert("Picture size: " + size);
+        console.log(dataUrl);
+        console.log(file);
+        //alert("Picture size: " + size);
         uploadImage(file);
         $("#gallery").append('<img src="' + dataUrl + '" >');
     });
@@ -52,7 +54,7 @@ function uploadImage(file) {
         contentType: false
     }).done(function (result) {
         var resultObject = JSON.stringify(result);
-        alert(resultObject);
+        //alert(resultObject);
         if (count >= 2) {
         	$('#photo').empty();
         	var fd = new FormData();
