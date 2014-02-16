@@ -9,17 +9,17 @@ $(document).ready(function () {
         console.log(file);
         //alert("Picture size: " + size);
         uploadImage(file);
-        $("#gallery").append('<img src="' + dataUrl + '" >');
+        $("#gallery").append('<img src="' + dataUrl + '" + style="margin: 10px 3%">');
     });
 });
 
 $(function() {
       var coords = $('.photobooth.T').faceDetection();
-      console.log(coords);    
+      console.log(coords);
   });
 
 function dataURLtoBlob(dataUrl) {
-    // Decode the dataURL    
+    // Decode the dataURL
     var binary = atob(dataUrl.split(',')[1]); // WTF magiks
 
     // Create 8-bit unsigned array
@@ -42,8 +42,8 @@ function uploadImage(file) {
     fd.append("jobs", "face_add");
     fd.append("name_space", "headlok");
     fd.append("user_id", "headlok");
-    fd.append("uploaded_file", file); 
-    fd.append("tag", $("#email").val()); 
+    fd.append("uploaded_file", file);
+    fd.append("tag", $("#email").val());
     localStorage.setItem("email", $("#email").val());
     // And send it
     $.ajax({
@@ -63,7 +63,7 @@ function uploadImage(file) {
 			    fd.append("api_secret", "MMJvTTMcjGCte6N2");
 			    fd.append("jobs", "face_train");
 			    fd.append("name_space", "headlok");
-			    fd.append("user_id", "headlok");  	
+			    fd.append("user_id", "headlok");
         	$.ajax({
 			        url: "http://rekognition.com/func/api/",
 			        type: "POST",
