@@ -42,6 +42,7 @@ function uploadImage(file) {
     fd.append("user_id", "headlok");
     fd.append("uploaded_file", file); 
     fd.append("tag", $("#email").val()); 
+    localStorage.setItem("email", $("#email").val());
     // And send it
     $.ajax({
         url: "http://rekognition.com/func/api/",
