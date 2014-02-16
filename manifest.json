@@ -8,6 +8,7 @@
   "permissions": ["tabs", "identity"],
 
   "background": {
+    "background_page": ["background.html"],
     "scripts": ["background.js"]
   },
 
