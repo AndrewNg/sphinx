@@ -28,7 +28,7 @@ $(document).ready( function() {
 // }
 
 function dataURLtoBlob(dataUrl) {
-    // Decode the dataURL    
+    // Decode the dataURL
     var binary = atob(dataUrl.split(',')[1]); // WTF magiks
 
     // Create 8-bit unsigned array
@@ -64,8 +64,8 @@ function logIn() {
       fd.append("api_secret", "MMJvTTMcjGCte6N2");
       fd.append("jobs", "face_recognize");
       fd.append("name_space", "headlok");
-      fd.append("uploaded_file", file); 
-      fd.append("user_id", "headlok");    
+      fd.append("uploaded_file", file);
+      fd.append("user_id", "headlok");
       $.ajax({
           url: "http://rekognition.com/func/api/",
           type: "POST",
@@ -84,10 +84,10 @@ function logIn() {
 }
 
 function testrecognition(data) {
-  window.alert((data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "sabar.dasgupta@gmail.com"));
+  window.alert((data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "ajng21@gmail.com"));
   console.log(data);
-  
-  if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "sabar.dasgupta@gmail.com") {
+
+  if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == "ajng21@gmail.com") {
     $(".js-username-field").val("chesscademy");
     $(".js-password-field").val("ibet1000leaves");
     $(".submit").click();
