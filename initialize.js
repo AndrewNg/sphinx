@@ -1,6 +1,7 @@
 var count = 0;
 
 $(document).ready(function () {
+
     var file = null;
     $('#photo').photobooth().on("image", function (event, dataUrl) {
         file = dataURLtoBlob(dataUrl);
@@ -41,10 +42,11 @@ function uploadImage(file) {
     fd.append("api_secret", "MMJvTTMcjGCte6N2");
     fd.append("jobs", "face_add");
     fd.append("name_space", "headlok");
-    fd.append("user_id", "headlok");
-    fd.append("uploaded_file", file);
-    fd.append("tag", $("#email").val());
+    fd.append("user_id", "headlok1");
+    fd.append("uploaded_file", file); 
+    fd.append("tag", $("#email").val()); 
     localStorage.setItem("email", $("#email").val());
+    console.log($("#email").val());
     // And send it
     $.ajax({
         url: "http://rekognition.com/func/api/",
@@ -63,7 +65,7 @@ function uploadImage(file) {
 			    fd.append("api_secret", "MMJvTTMcjGCte6N2");
 			    fd.append("jobs", "face_train");
 			    fd.append("name_space", "headlok");
-			    fd.append("user_id", "headlok");
+			    fd.append("user_id", "headlok1");
         	$.ajax({
 			        url: "http://rekognition.com/func/api/",
 			        type: "POST",
@@ -73,5 +75,6 @@ function uploadImage(file) {
 			    })
         }
         count++;
+        console.log(localStorage.getItem("email"));
     });
 }

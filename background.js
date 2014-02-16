@@ -23,6 +23,9 @@ chrome.runtime.onMessage.addListener(
 				},200);
 			}, function(err) { alert("there was an error " + err)});
 		}
+		else if (request.type == "email_update") {
+			console.log(localStorage.getItem("email"));
+			sendResponse({email: localStorage.getItem("email")});
+		}
 		return true;
 });
-
