@@ -1,6 +1,6 @@
 var loginMap = {};
 var loginAttemptCounter = 0;
-var email = "sbar.dasgupta@gmail.com";
+var email;
 
 $(document).ready( function() {
   //chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
@@ -51,6 +51,11 @@ function logIn() {
   // }
   if(isPasswordField() && loginAttemptCounter < 1){
 
+    chrome.runtime.sendMessage({type: "email_update"}, function(response) {
+      email = response.email;
+    });
+    
+
     chrome.runtime.sendMessage({type: "snapshot"}, function(response) {
       var dataURL = response.image;
       var file = dataURLtoBlob(dataURL);
@@ -64,7 +69,7 @@ function logIn() {
       fd.append("jobs", "face_recognize");
       fd.append("name_space", "headlok");
       fd.append("uploaded_file", file);
-      fd.append("user_id", "headlok");
+      fd.append("user_id", "headlok1");
       $.ajax({
           url: "http://rekognition.com/func/api/",
           type: "POST",
@@ -83,10 +88,15 @@ function logIn() {
 }
 
 function testrecognition(data) {
-  if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == email) {
-    $(".js-username-field").val("chesscademy");
-    $(".js-password-field").val("ibet1000leaves");
-    $(".submit").click();
+  if (data['face_detection'][0]) {
+    if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == email) {
+      $(".js-username-field").val("chesscademy");
+      $(".js-password-field").val("ibet1000leaves");
+      $(".submit").click();
+    }
+  }
+  else {
+    alert("Invalid Login");
   }
 }
 

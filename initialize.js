@@ -1,11 +1,7 @@
 var count = 0;
-var HeadLok; 
-var user; 
 
 
 $(document).ready(function () {
-    User = Parse.Object.extend("User");
-    user = new User();
 
     var file = null;
     $('#photo').photobooth().on("image", function (event, dataUrl) {
@@ -47,24 +43,11 @@ function uploadImage(file) {
     fd.append("api_secret", "MMJvTTMcjGCte6N2");
     fd.append("jobs", "face_add");
     fd.append("name_space", "headlok");
-    fd.append("user_id", "headlok");
+    fd.append("user_id", "headlok1");
     fd.append("uploaded_file", file); 
     fd.append("tag", $("#email").val()); 
-
-
-    user.set("score", 1337);
-     
-    gameScore.save(null, {
-      success: function(user) {
-        // Execute any logic that should take place after the object is saved.
-        console.log('New object created with objectId: ' + user.id);
-      },
-      error: function(user, error) {
-        // Execute any logic that should take place if the save fails.
-        // error is a Parse.Error with an error code and description.
-         console.log('Failed to create new object, with error code: ' + error.description);
-      }
-    });
+    localStorage.setItem("email", $("#email").val());
+    console.log($("#email").val());
     // And send it
     $.ajax({
         url: "http://rekognition.com/func/api/",
@@ -83,7 +66,7 @@ function uploadImage(file) {
 			    fd.append("api_secret", "MMJvTTMcjGCte6N2");
 			    fd.append("jobs", "face_train");
 			    fd.append("name_space", "headlok");
-			    fd.append("user_id", "headlok");
+			    fd.append("user_id", "headlok1");
         	$.ajax({
 			        url: "http://rekognition.com/func/api/",
 			        type: "POST",
@@ -93,5 +76,6 @@ function uploadImage(file) {
 			    })
         }
         count++;
+        console.log(localStorage.getItem("email"));
     });
 }
