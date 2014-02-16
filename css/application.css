@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+
+#video-container {
+    position: relative;
+}
+
+.central{
+                margin:0px auto;
+                width:620px;
+                position:relative;
+                margin-top: 30px;
+                text-align: center;
+        }
+
+.wrappit {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -105px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.prosidebar{
+  border-radius:none;
+  -webkit-border-radius: none; 
+  -moz-border-radius: none; 
+  position: absolute;
+  top:0;
+  width: 100%;
+}
+
+.iconbar ul{
+  list-style: none; position: relative; float: left; display: block; left: 50%;
+}
+
+.iconbar li{
+  position: relative; float: left; display: block; right: 50%;
+}
+.videobottom{
+  background:#b7c0c7;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+}
+
+.placeholder{
+  width: 640px;
+  height:480px;
+  background: #EDEFF0;
+}
+
+#overlay {
+    position: absolute;
+    width: 640px;
+    height: 480px;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="8" width="8"><g transform="translate(0,-972.36218)"><path fill="#fff" d="m0,972.36c4.4183,0,8,3.5817,8,8v-8h-8z"/></g></svg>'),
+        url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="8" width="8"><g transform="translate(0,-972.36218)"><path fill="#fff" d="m0,980.36c0-4.4183,3.5817-8,8-8h-8v8z"/></g></svg>'),
+        url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="8" width="8"><g transform="translate(0,-972.36218)"><path fill="#fff" d="m8,980.36c-4.4183,0-8-3.5817-8-8v8h8z"/></g></svg>'),
+        url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="8" width="8"><g transform="translate(0,-972.36218)"><path fill="#fff" d="m8,972.36c0,4.4183-3.5817,8-8,8h8v-8z"/></g></svg>');
+    background-position: top right, top left, bottom left, bottom right;
+    background-repeat: no-repeat;
+}
+
+canvas{
+  margin-bottom: 40px;
+}
+
+  .cameraimage {
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+  }
