@@ -26,18 +26,22 @@
   }
 </style>
 
+<div>
 <form id = "form1"> 
   <input id="email" type="text" class="form-control" placeholder="Enter Email..." />
-  <button id="submit_email" class = "btn btn-primary" placeholder = "Submit"/>
+  <button id="submit_email" onlick="submit_email();" class = "btn btn-primary" placeholder = "Submit"/>
 </form>
+</div>
 
+<div>
 <form id = "form2">
   <input type = "text" class = "form-control" id = "url-field" placeholder = "Enter URL..."/>
   <input type = "text" class = "form-control" id = "username-field" placeholder = "Enter username/email..."/>
   <input type = "password" class = "form-control" id = "password-field" placeholder = "Enter password..."/>
 
-  <button id="submit_credentials" class = "btn btn-primary" placeholder = "Submit"/>
+  <button id="submit_credentials" onclick="submit_credentials();" class = "btn btn-primary" placeholder = "Submit"/>
 </form>
+</div>
 
 
 
