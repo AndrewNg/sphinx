@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 <head>
 	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="photobooth_min.js"></script>
@@ -20,4 +20,100 @@
 <div id="photo"></div>
 
 <div id="gallery"></div>
-</html>
+</html> -->
+
+<%=stylesheet_link_tag("animate.min")%>
+<%=javascript_include_tag("canvasjs.min")%>
+<%=javascript_include_tag("jquery.timer")%>
+<%=javascript_include_tag("jquery.animate-shadow-min")%>
+
+<title>Artemis</title>
+
+    <div class="iconbar iconbar-horizontal prosidebar" style = "border-radius:0px;">
+                <ul>
+                  <li class="active"><a href="/" class="fui-user"></a></li>
+                  <li><a href="/history" class="fui-calendar"></a></li>
+                </ul>
+    </div> <!-- /iconbar -->
+
+
+  <div class = "central">
+    <div id = "checkup">
+      <h6 style = "margin-bottom:40px; opacity:0">.</h6>
+
+      <h4 style = "margin-bottom:10px; margin-top:-10px">Diagnostics</h4>
+      <div id = "video-container" style = "margin-bottom:40px;">
+        <div class = "placeholder">
+          <p style = "padding:20px; position:absolute; font-size:15px; color:silver">When in checkup mode, be sure to <strong>remain still in the frame</strong>. You will be recorded for a total of <strong>6</strong> seconds. Afterwards, your statistics will be displayed and saved.</p>
+          <%=link_to image_tag("camera.svg", :style => "width:70%; height:70%; margin:0px auto; display:block; padding-top:120px", :class => "cameraimage", :onclick => "showVid()"), "javascript:startStream()"%>
+        </div>
+        <video style = "display:none" class = "vid" width = "640" height = "480" autoplay></video>
+        <canvas style="display:none;"></canvas>
+        <div id="overlay"></div>
+      </div>
+        <div id = "countdown" style="display: none">
+          <strong><p>00:08:00</p></strong>
+        </div>
+
+
+        <div id = "statistics" style = "display:none">
+        <%=image_tag("graph.svg", :style => "margin:0px auto; display:block; width:40%; height:40%")%>
+            <%#=video_tag(@modified_vid, :size => "640x480")%>
+          <table class="table table-striped table-hover">
+            <tbody>
+              <tr>
+                <td><strong>Average Heart Rate</strong></td>
+                <td>70 b/m</td>
+                <td>St.d 5.3</td>
+              </tr>
+              <tr>
+                <td><strong>Average Breathing Rate</strong></td>
+                <td>60 b/m</td>
+                <td>st.d 3.4</td>
+              </tr>
+              <tr>
+                <td><strong>Average Blood Flow</strong></td>
+                <td>80 flows</td>
+                <td>St.d 5.6</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert">
+            <h4>Overview</h4>
+            <ul>
+              <li>
+                Your heart rate looks close to rest. You seem to be doing stable and fine.
+              </li>
+              <li>
+                Your breathing rate is a little rapid. Perform cardio to improve this.
+              </li>
+              <li>
+                Your blood flow is rather slow, and this is a directly proportional indication of somewhat dangerous blood pressure. Be careful!
+              </li>
+            </ul>
+          </div>
+          <button class="btn btn-default btn-wide" onclick="restart()" style = "margin-bottom:30px">Test Again</button>
+          <button class="btn btn-primary btn-wide" style = "margin-bottom:30px" onclick="notify_self()">Email Results</button>
+       </div>
+      </div>
+    </div>
+
+    <div class="bottom-menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 navbar-brand">
+          </div>
+
+          <div class="col-md-8">
+  Built with love at <%=link_to "HackPrinceton", 'http://hackprinceton.com'%> by <%=link_to "Team Chesscademy", 'http://chesscademy.com/team'%>
+          </div>
+
+          <div class="col-md-2">
+            <ul class="bottom-icons">
+              <li><a href="http://facebook.com/Chesscademy" class="fui-facebook"></a></li>
+              <li><a href="http://twitter.com/Chesscademy" class="fui-twitter"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
