@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function() {
        localStorage.setItem("email", $("#email").val());
        email = $("#email").val();
+       $('#logged_in_as').text("Logged in as " + email);
+       alert('Successfully updated email!');
        console.log('email updated');
     });
 });

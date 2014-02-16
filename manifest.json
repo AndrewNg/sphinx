@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Headlok",
+  "name": "Sphinx",
   "description": "This extension lets you login to sites using facial recognition",
   "version": "1.0",
 
