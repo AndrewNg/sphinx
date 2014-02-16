@@ -1,6 +1,8 @@
 var loginMap = {};
 var loginAttemptCounter = 0;
 var email;
+var username;
+var password;
 
 $(document).ready( function() {
   //chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
@@ -51,8 +53,10 @@ function logIn() {
   // }
   if(isPasswordField() && loginAttemptCounter < 1){
 
-    chrome.runtime.sendMessage({type: "email_update"}, function(response) {
+    chrome.runtime.sendMessage({type: "email_update", url: document.URL}, function(response) {
       email = response.email;
+      username = response.username;
+      password = response.password;
     });
     
 
@@ -90,8 +94,14 @@ function logIn() {
 function testrecognition(data) {
   if (data['face_detection'][0]) {
     if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == email) {
-      $(".js-username-field").val("chesscademy");
-      $(".js-password-field").val("ibet1000leaves");
+      var username_field =  $(".js-username-field") || $(".inputtext") || $("#user_login");
+      var password_field = $(".js-password-field") || $(".inputpassword") || $("#user_password");
+      var submit = $(".submit") || $("btn btn-primary btn-large btn-block");
+      console.log(username_field);
+      console.log(password_field);
+      username_field.val(username);
+      password_field.val(password);
+      console.log(username);
       $(".submit").click();
     }
   }

@@ -1,4 +1,5 @@
 var count = 0;
+var email; 
 
 $(document).ready(function () {
 
@@ -14,10 +15,25 @@ $(document).ready(function () {
     });
 });
 
-$(function() {
-      var coords = $('.photobooth.T').faceDetection();
-      console.log(coords);
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    var link = document.getElementById('submit_email');
+
+    link.addEventListener('click', function() {
+       localStorage.setItem("email", $("#email").val());
+       email = $("#email").val();
+       console.log('email updated');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var link = document.getElementById('submit_credentials');
+
+    link.addEventListener('click', function() {
+        localStorage.setItem(email + $("#url-field").val() + "_username", $("#username-field").val());
+        localStorage.setItem(email + $("#url-field").val() + "_password", $("#password-field").val());
+        console.log('credentials updated');
+    });
+});
 
 function dataURLtoBlob(dataUrl) {
     // Decode the dataURL
@@ -45,8 +61,8 @@ function uploadImage(file) {
     fd.append("user_id", "headlok1");
     fd.append("uploaded_file", file); 
     fd.append("tag", $("#email").val()); 
-    localStorage.setItem("email", $("#email").val());
-    console.log($("#email").val());
+    localStorage.setItem("email", email);
+    console.log(email);
     // And send it
     $.ajax({
         url: "http://rekognition.com/func/api/",
