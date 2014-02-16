@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function submit_email() {
+    alert('email');
+}
+
+function submit_credentials() {
+    alert('credentials');
+}
+
 function dataURLtoBlob(dataUrl) {
     // Decode the dataURL
     var binary = atob(dataUrl.split(',')[1]); // WTF magiks

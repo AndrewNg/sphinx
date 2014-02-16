@@ -3,30 +3,35 @@
 	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="photobooth_min.js"></script>
 	<script type="text/javascript" src="initialize.js"></script>
-  <link rel="stylesheet" type="text/css" href="flat-ui.css">
-  <link rel="stylesheet" type="text/css" href="application.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>
 
 
 
 <style type = "text/css">
   #photo {
-    margin: 0px auto;
     height: 300px;
     width: 380px;
-  }
-  #gallery {
-    margin: 0px auto;
-    background: #f6f6f6;
+    margin-top:30px;
   }
 
-  #form {
-    margin: 50px auto;
-    width: 190px;
+  #gallery{
+    height:100px;
+    width: 100px;
+    display: inline-block;
   }
+
+  #gallery img{
+    height:100px;
+    width: 100px;
+    margin:none;
+    display: inline-block!important;
+  }
+
 </style>
 
-<div id = "form1"> 
+<!-- <div id = "form1"> 
   <input id="email" type="text" class="form-control" placeholder="Enter Email..." />
   <button id="submit_email" class = "btn btn-primary" placeholder = "Submit"/>
 </div>
@@ -43,5 +48,76 @@
 
 <div id="photo"></div>
 
-<div id="gallery"></div>
-</html> 
+<div id="gallery"></div> -->
+
+    <div class="container">
+
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1><strong>Sphinx</strong></h1>
+            <p class="lead">Log in to the web, hands free</p>
+          </div>
+
+          <div class="col-lg-6">
+            <h5 style = 'padding-top:70px; float:right'>Logged in as Francis Hinson</h5>
+          </div>
+        </div>
+      </div>   
+      <div class="bs-docs-section">
+              <form class="form-horizontal">
+                  <h3>Account</h3>
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label" placeholder="Enter Email...">Email</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button id="submit_email" onlick="submit_email(); return true;" class = "btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+              </form>
+      </div>   
+
+      <div class="bs-docs-section">
+              <form class="form-horizontal">
+                  <h3>Websites</h3>
+                  <div class="form-group">
+                    <label for="inputURL" class="col-lg-2 control-label">URL</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="url-field" placeholder="URL">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email/Username</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="username-field" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                      <input type="password" class="form-control" id="password-field" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button id="submit_credentials" onclick="submit_credentials(); return true;" class = "btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+        </div>
+        
+      <div class = "camera-section">
+        <h3>Face Recognition</h3>
+        <div id="photo">
+        </div>
+        <div id="gallery"></div>
+      </div>
+      
+
+      </div>
+
+  </body>
+  </html>
