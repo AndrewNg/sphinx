@@ -25,7 +25,10 @@ chrome.runtime.onMessage.addListener(
 		}
 		else if (request.type == "email_update") {
 			console.log(localStorage.getItem("email"));
-			sendResponse({email: localStorage.getItem("email")});
+			var email = localStorage.getItem("email");
+			console.log(email);
+			console.log(request.url);
+			sendResponse({email: email, username: localStorage.getItem(email + request.url + "_username"), password: localStorage.getItem(email + request.url + "_password")});
 		}
 		return true;
 });

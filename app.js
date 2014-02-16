@@ -1,6 +1,8 @@
 var loginMap = {};
 var loginAttemptCounter = 0;
 var email;
+var username;
+var password;
 
 $(document).ready( function() {
   //chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
@@ -51,8 +53,10 @@ function logIn() {
   // }
   if(isPasswordField() && loginAttemptCounter < 1){
 
-    chrome.runtime.sendMessage({type: "email_update"}, function(response) {
+    chrome.runtime.sendMessage({type: "email_update", url: document.URL}, function(response) {
       email = response.email;
+      username = response.username;
+      password = response.password;
     });
     
 
