@@ -2,7 +2,9 @@ var count = 0;
 var email; 
 
 $(document).ready(function () {
-
+    if (localStorage.getItem("email")) {
+        $('#logged_in_as').text("Logged in as " + localStorage.getItem("email"));
+    }
     var file = null;
     $('#photo').photobooth().on("image", function (event, dataUrl) {
         file = dataURLtoBlob(dataUrl);
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function() {
         localStorage.setItem(email + $("#url-field").val() + "_username", $("#username-field").val());
         localStorage.setItem(email + $("#url-field").val() + "_password", $("#password-field").val());
+        alert('Successfully updated credentials!');
         console.log('credentials updated');
     });
 });
