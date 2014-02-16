@@ -107,5 +107,3 @@ function isPasswordField() {
   console.log("false");
   return false;
 }
-
-// Check if the page is saved
