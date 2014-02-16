@@ -2,5 +2,19 @@ chrome.browserAction.onClicked.addListener(function() {
     chrome.tabs.create({'url': "initialize.html"});
 });
 
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		console.log("message received");
+		if (request.greeting == "snapshot") {
+			navigator.getUserMedia({video: true}, function(stream) {
+				var video = document.getElementById("v");
+				var canvas = document.getElementById("c");
 
+				video.src = stream;
+				canvas.getContext("2d").drawImage(video, 0, 0, 380, 300, 0, 0, 380, 300);
+				var img = canvas.toDataURL("image/png");
+				sendResponse({farewell: img});
+			}, function(err) { alert("there was an error " + err)});
+		}
+});
 
