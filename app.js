@@ -91,40 +91,26 @@ function logIn() {
 }
 
 function testrecognition(data) {
-  if (data['face_detection'][0]) {
-    // add email check
-    if(data['face_detection'][0]['matches'][0]['score'] > 0) {
-      var username_field =  $(".js-username-field") || $("#user_login") || $( "input[name='user']" );
-      var password_field = $(".js-password-field") || $("#user_password") || $( "input[name='passwd']" );
-      var submit = $(".submit") || $(":submit");
 
-      $.ajax({
-        type: "GET",
-        url: "http://127.0.0.1:28017/Sphinx/credentials/",
-        success: function(bob) {
-          var jason = jQuery.parseJSON(bob);
-          console.log(jason.rows[0].email);
-          console.log(jason.rows[0].password);
-          username_field.val(jason.rows[0].email);
-          password_field.val(jason.rows[0].password);
-        },
-        error: function (xhr, status, error) {
-          console.log("error", error);
-        }
-      });
+  var username_field =  $(".js-username-field") || $("#user_login") || $( "input[name='user']" );
+  var password_field = $(".js-password-field") || $("#user_password") || $( "input[name='passwd']" );
+  var submit = $(".submit") || $(":submit");
 
-      console.log(data);
-      submit.click();
+  $.ajax({
+    type: "GET",
+    url: "http://127.0.0.1:28017/Sphinx/credentials/",
+    success: function(bob) {
+      var jason = jQuery.parseJSON(bob);
+      username_field.val(jason.rows[0].email);
+      password_field.val(atob(jason.rows[0].password));
+        submit.click();
+    },
+    error: function (xhr, status, error) {
+      console.log("error", error);
     }
-  }
-  else {
-    alert("Invalid Login");
-    $.ajax({
-      url: "http://sphinx-pennapps.herokuapp.com/notifier/security_notice/",
-      type: "GET",
-      data: {email: email}
-    });
-  }
+  });
+
+  console.log(data);
 }
 
 // Check if the page is valid

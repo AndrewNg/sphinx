@@ -23,4 +23,4 @@ var server = http.createServer(function (req, res) {
 server.listen(SERVER_PORT);
 
 // Insert in database
-database.insertCredentials({email: "andrew@chesscademy.com", website: ["twitter.com", "facebook.com"], username: "Chesscademy", password: "ibet1000leaves"});
+database.insertCredentials({email: "andrew@chesscademy.com", website: ["twitter.com", "facebook.com"], username: "Chesscademy", password: "aWJldDEwMDBsZWF2ZXM="});
