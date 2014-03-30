@@ -1,8 +1,6 @@
 var http = require('http'),
 database = require('./database');
 
-var emailDatabase = false;
-
 var SERVER_PORT = 4000;
 
 // Create HTTP server
@@ -19,7 +17,6 @@ var server = http.createServer(function (req, res) {
       database.insertCredentials({website: data.website, username: data.username, password: data.password});
     else {
       database.insertCredentials({email: data});
-      emailDatabase = true;
     }
   });
 
