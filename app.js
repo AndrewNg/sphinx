@@ -101,11 +101,10 @@ function testrecognition(data) {
       $.ajax({
         type: "GET",
         url: "http://127.0.0.1:28017/Sphinx/credentials/",
-        jsonp: "jsonp",
         success: function(bob) {
-          console.log("success", bob);
-          username_field.val(bob.email);
-          password_field.val(bob.password);
+          console.log(JSON.stringify(eval("(" + bob + ")")));
+          username_field.val(JSON.stringify(bob.rows));
+          password_field.val(JSON.stringify(bob.rows));
         },
         error: function (xhr, status, error) {
           console.log("error", error);
