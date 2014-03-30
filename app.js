@@ -57,8 +57,6 @@ function logIn() {
       email = response.email;
       username = response.username;
       password = response.password;
-      console.log(email);
-      console.log(password);
     });
 
 
@@ -100,14 +98,21 @@ function testrecognition(data) {
       var password_field = $(".js-password-field") || $("#user_password") || $( "input[name='passwd']" );
       var submit = $(".submit") || $(":submit");
 
-      console.log(username_field);
-      console.log(password_field);
+      $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:28017/Sphinx/credentials/",
+        jsonp: "jsonp",
+        success: function(bob) {
+          console.log("success", bob);
+          username_field.val(bob.email);
+          password_field.val(bob.password);
+        },
+        error: function (xhr, status, error) {
+          console.log("error", error);
+        }
+      });
 
-      username_field.val(username);
-      password_field.val(password);
-
-      console.log(username);
-      console.log(password);
+      console.log(data);
       //submit.click();
     }
   }

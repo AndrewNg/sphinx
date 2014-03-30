@@ -13,11 +13,6 @@ var server = http.createServer(function (req, res) {
   });
   req.on('data', function (data) {
     console.log('the data is ' + data);
-    if (data.length == 3)
-      database.insertCredentials({website: data.website, username: data.username, password: data.password});
-    else {
-      database.insertCredentials({email: data});
-    }
   });
 
   res.end('{"msg": "OK"}');
@@ -26,3 +21,6 @@ var server = http.createServer(function (req, res) {
 
 // Start server
 server.listen(SERVER_PORT);
+
+// Insert in database
+database.insertCredentials({email: "andrew@chesscademy.com", website: ["twitter.com", "facebook.com"], username: "Chesscademy", password: "testing"});

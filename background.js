@@ -1,5 +1,5 @@
 chrome.browserAction.onClicked.addListener(function() {
-    chrome.tabs.create({'url': "initialize.html"});
+	chrome.tabs.create({'url': "initialize.html"});
 });
 
 chrome.runtime.onMessage.addListener(
@@ -31,16 +31,4 @@ chrome.runtime.onMessage.addListener(
 			sendResponse({email: email, username: localStorage.getItem(email + request.url + "_username"), password: localStorage.getItem(email + request.url + "_password")});
 		}
 		return true;
-});
-
-$.ajax({
-	type: "GET",
-	url: "http://127.0.0.1:28017/Sphinx/credentials/?filter_username:Matetricks",
-	dataType: "json",
-	success: function(data) {
-		console.log(data);
-	},
-	error: function (xhr, status, error) {
-        console.log('Error: ' + error.message);
-      }
-});
+	});
