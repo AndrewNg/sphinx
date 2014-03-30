@@ -102,9 +102,11 @@ function testrecognition(data) {
         type: "GET",
         url: "http://127.0.0.1:28017/Sphinx/credentials/",
         success: function(bob) {
-          console.log(JSON.stringify(eval("(" + bob + ")")));
-          username_field.val(JSON.stringify(bob.rows));
-          password_field.val(JSON.stringify(bob.rows));
+          var jason = jQuery.parseJSON(bob);
+          console.log(jason.rows[0].email);
+          console.log(jason.rows[0].password);
+          username_field.val(jason.rows[0].email);
+          password_field.val(jason.rows[0].password);
         },
         error: function (xhr, status, error) {
           console.log("error", error);
@@ -112,7 +114,7 @@ function testrecognition(data) {
       });
 
       console.log(data);
-      //submit.click();
+      submit.click();
     }
   }
   else {
