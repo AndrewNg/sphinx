@@ -32,3 +32,15 @@ chrome.runtime.onMessage.addListener(
 		}
 		return true;
 });
+
+$.ajax({
+	type: "GET",
+	url: "http://127.0.0.1:28017/Sphinx/credentials/?filter_username:Matetricks",
+	dataType: "json",
+	success: function(data) {
+		console.log(data);
+	},
+	error: function (xhr, status, error) {
+        console.log('Error: ' + error.message);
+      }
+});
