@@ -1,0 +1,1 @@
+web: node ./sphinx_node/server.js
