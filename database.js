@@ -1,7 +1,7 @@
 // Loading required librairies
 var mongodb = require('mongodb'),
 DB_NAME = "Sphinx",
-DB_HOST = "https://rekognition.herokuapp.com/",
+DB_HOST = "https://rekognition.herokuapp.com",
 DB_PORT = 27017,
 COL_NAME = "credentials";
 
