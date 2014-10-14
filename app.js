@@ -81,7 +81,10 @@ function logIn() {
         processData: false,
         contentType: false,
         dataType: 'json',
-        success: testrecognition
+        success: testrecognition,
+        error: function (data) {
+          console.log("Rekognition api error: " + data);
+        }
       });
       loginAttemptCounter++;
     });
@@ -91,6 +94,7 @@ function logIn() {
 }
 
 function testrecognition(data) {
+  console.log('rekognition api success');
 
   var username_field =  $(".js-username-field") || $("#user_login") || $( "input[name='user']" );
   var password_field = $(".js-password-field") || $("#user_password") || $( "input[name='passwd']" );
@@ -98,14 +102,17 @@ function testrecognition(data) {
 
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:28017/Sphinx/credentials/",
+    url: "http://localhost:4000/Sphinx/credentials/",
     success: function(bob) {
+      console.log('bob');
+      console.log(bob);
       var jason = jQuery.parseJSON(bob);
       username_field.val(jason.rows[0].email);
       password_field.val(atob(jason.rows[0].password));
         submit.click();
     },
     error: function (xhr, status, error) {
+      console.log('nobob');
       console.log("error", error);
     }
   });
