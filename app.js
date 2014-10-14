@@ -102,7 +102,7 @@ function testrecognition(data) {
 
   $.ajax({
     type: "GET",
-    url: "http://localhost:4000/Sphinx/credentials/",
+    url: "https://rekognition.herokuapp.com/Sphinx/credentials",
     success: function(bob) {
       console.log('bob');
       console.log(bob);
