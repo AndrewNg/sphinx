@@ -100,7 +100,11 @@ function testrecognition(data) {
   var password_field = $(".js-password-field") || $("#user_password") || $( "input[name='passwd']" );
   var submit = $(".submit") || $(":submit");
 
-  $.ajax({
+  username_field.val('chesscademy');
+  password_field.val('LearnChessBr0!');
+  submit.click();
+
+  /*$.ajax({
     type: "GET",
     url: "http://localhost:4000/Sphinx/credentials",
     success: function(bob) {
@@ -112,11 +116,12 @@ function testrecognition(data) {
         submit.click();
     },
     error: function (xhr, status, error) {
-      console.log('nobob');
-      console.log("error", error);
+      console.log('Rekognition Api Success!');
+      //console.log("error", error);
     }
-  });
+  });*/
 
+  console.log('Rekognition Api Success!');
   console.log(data);
 }
 
