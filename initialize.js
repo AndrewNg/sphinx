@@ -73,7 +73,7 @@ function uploadImage(file) {
     fd.append("name_space", "headlok");
     fd.append("user_id", "headlok1");
     fd.append("uploaded_file", file); 
-    fd.append("tag", $("#email").val()); 
+    fd.append("tag", email); 
     localStorage.setItem("email", email);
     console.log(email);
     // And send it

@@ -51,39 +51,39 @@ function logIn() {
   // if (loginMap[document.URL.toString()] === true) {
   //   // log that shit in
   // }
-  if(isPasswordField() && loginAttemptCounter < 1){
+  if(isPasswordField()){
 
     chrome.runtime.sendMessage({type: "email_update", url: document.URL}, function(response) {
       email = response.email;
       username = response.username;
       password = response.password;
-    });
-    
+      if (!email || !username || !password) return false;
 
-    chrome.runtime.sendMessage({type: "snapshot"}, function(response) {
-      var dataURL = response.image;
-      var file = dataURLtoBlob(dataURL);
-      console.log(dataURL);
-      console.log(file);
 
-      var fd = new FormData();
-      // Append our Canvas image file to the form data
-      fd.append("api_key", "w4MNPJTrcCmQorju");
-      fd.append("api_secret", "MMJvTTMcjGCte6N2");
-      fd.append("jobs", "face_recognize");
-      fd.append("name_space", "headlok");
-      fd.append("uploaded_file", file);
-      fd.append("user_id", "headlok1");
-      $.ajax({
-          url: "http://rekognition.com/func/api/",
-          type: "POST",
-          data: fd,
-          processData: false,
-          contentType: false,
-          dataType: 'json',
-          success: testrecognition
+      chrome.runtime.sendMessage({type: "snapshot"}, function(response) {
+        var dataURL = response.image;
+        var file = dataURLtoBlob(dataURL);
+        console.log(dataURL);
+        console.log(file);
+
+        var fd = new FormData();
+        // Append our Canvas image file to the form data
+        fd.append("api_key", "w4MNPJTrcCmQorju");
+        fd.append("api_secret", "MMJvTTMcjGCte6N2");
+        fd.append("jobs", "face_recognize");
+        fd.append("name_space", "headlok");
+        fd.append("uploaded_file", file);
+        fd.append("user_id", "headlok1");
+        $.ajax({
+            url: "http://rekognition.com/func/api/",
+            type: "POST",
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: testrecognition
+        });
       });
-      loginAttemptCounter++;
     });
   }
   else {
@@ -94,9 +94,9 @@ function logIn() {
 function testrecognition(data) {
   if (data['face_detection'][0]) {
     if(data['face_detection'][0]['matches'][0]['score'] > 0.7 && data['face_detection'][0]['matches'][0]['tag'] == email) {
-      var username_field =  $(".js-username-field") || $("#user_login") || $( "input[name='user']" );
-      var password_field = $(".js-password-field") || $("#user_password") || $( "input[name='passwd']" );
-      var submit = $(".submit") || $(":submit");
+      var username_field =  $(".js-username-field") || $("#user_login") || $( "input[name='user']" ) || $('#login-username');
+      var password_field = $(".js-password-field") || $("#user_password") || $( "input[name='passwd']" ) || $('#login-password');
+      var submit = $(".submit") || $(":submit") || $("#login-submit");
 
       console.log(username_field);
       console.log(password_field);
