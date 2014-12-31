@@ -1,1 +1,1 @@
-Hack created by Team Chesscademy for PennApps Spring 2014
+Hack created by Team Chesscademy for HackPrinceton Spring 2014

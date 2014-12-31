@@ -1,5 +1,5 @@
 chrome.browserAction.onClicked.addListener(function() {
-    chrome.tabs.create({'url': "initialize.html"});
+	chrome.tabs.create({'url': "initialize.html"});
 });
 
 chrome.runtime.onMessage.addListener(
@@ -31,4 +31,4 @@ chrome.runtime.onMessage.addListener(
 			sendResponse({email: email, username: localStorage.getItem(email + request.url + "_username"), password: localStorage.getItem(email + request.url + "_password")});
 		}
 		return true;
-});
+	});

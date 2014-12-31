@@ -10,6 +10,10 @@
 
 
 <style type = "text/css">
+body{
+  background:url(bg.jpg) no-repeat;
+  background-size: 100%;
+}
   #photo {
     height: 300px;
     width: 380px;
@@ -31,7 +35,7 @@
 
 </style>
 
-<!-- <div id = "form1"> 
+<!-- <div id = "form1">
   <input id="email" type="text" class="form-control" placeholder="Enter Email..." />
   <button id="submit_email" class = "btn btn-primary" placeholder = "Submit"/>
 </div>
@@ -63,14 +67,14 @@
             <h5 id='logged_in_as' style='padding-top:70px; float:right'>Logged in as ...</h5>
           </div>
         </div>
-      </div>   
+      </div>
       <div class="bs-docs-section">
               <div class="form-horizontal">
                   <h3>Account</h3>
                   <div class="form-group">
                     <label for="inputEmail" class="col-lg-2 control-label" placeholder="Enter Email...">Email</label>
                     <div class="col-lg-10">
-                      <input type="text" class="form-control" id="email" placeholder="Email">
+                      <input type="text" class="form-control" id="email" style = "width:300px;" placeholder="Email">
                     </div>
                   </div>
                   <div class="form-group">
@@ -79,43 +83,43 @@
                     </div>
                   </div>
               </div>
-      </div>   
+      </div>
 
-      <div class="bs-docs-section">
-              <div class="form-horizontal">
+      <div class="bs-docs-section" id = "websites" style = "display:none">
+              <form class="form-horizontal">
                   <h3>Websites</h3>
                   <div class="form-group">
                     <label for="inputURL" class="col-lg-2 control-label">URL</label>
                     <div class="col-lg-10">
-                      <input type="text" class="form-control" id="url-field" placeholder="URL">
+                      <input type="text"  style = "width:300px;" class="form-control" id="url-field" placeholder="URL">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputEmail" class="col-lg-2 control-label">Email/Username</label>
                     <div class="col-lg-10">
-                      <input type="text" class="form-control" id="username-field" placeholder="Email">
+                      <input type="text" class="form-control"  style = "width:300px;" id="username-field" placeholder="Email">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                     <div class="col-lg-10">
-                      <input type="password" class="form-control" id="password-field" placeholder="Password">
+                      <input type="password"  style = "width:300px;" class="form-control" id="password-field" placeholder="Password">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                       <button id="submit_credentials" class = "btn btn-primary">Submit</button>
                     </div>
-                  </div>
+                  </div> style = "width:300px;"
         </div>
-        
+
       <div class = "camera-section">
         <h3>Face Recognition</h3>
         <div id="photo">
         </div>
         <div id="gallery"></div>
       </div>
-      
+
 
       </div>
 
