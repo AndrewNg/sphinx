@@ -81,7 +81,11 @@ function logIn() {
         processData: false,
         contentType: false,
         dataType: 'json',
-        success: testrecognition,
+        success: function(data) {
+          console.log('data:');
+          console.log(data);
+          //testrecognition();
+        },
         error: function (data) {
           console.log("Rekognition api error: " + data);
         }
